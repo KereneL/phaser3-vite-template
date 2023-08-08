@@ -11,7 +11,7 @@ export default class Ball extends Phaser.GameObjects.Container {
 		this.graphic = {};
 		this.active = false;
 
-		this.graphic = scene.add.circle(x, y, this.radius, 0xDD00DD);
+		this.graphic = scene.add.circle(x, y, this.radius, 0xAAAAAA);
 		this.graphic.setOrigin(0);
 
 		scene.physics.add.existing(this.graphic, false);
@@ -26,8 +26,9 @@ export default class Ball extends Phaser.GameObjects.Container {
 	create() {
 
 	}
-	hitBottom() {
+	hitBottom(sourcePosition) {
 		this.resetVelocity();
+		this.graphic.setPosition(sourcePosition.x-this.radius,sourcePosition.y)
 		this.active = false;
 	}
 	resetVelocity() {
